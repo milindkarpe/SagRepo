@@ -34,11 +34,11 @@
                             <li class="dropdown" id="preview-menu"><a class="dropdown-toggle" data-toggle="dropdown"
                                 href="#">Demo <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a target="_blank" href="AddBranch.aspx">Branch</a></li>
-                                    <li><a target="_blank" href="AddRank.aspx">Rank</a></li>
+                                    <li><a href="AddBranch.aspx">Branch</a></li>
+                                    <li><a href="AddRank.aspx">Rank</a></li>
                                     <li class="divider"></li>
-                                    <li><a target="_blank" href="AddDistributor.aspx">Distributor</a></li>
-                                    <li><a target="_blank" href="AddCust.aspx">Rank</a></li>
+                                    <li><a  href="AddDistributor.aspx">Distributor</a></li>
+                                    <li><a  href="AddCust.aspx">Rank</a></li>
                                 </ul>
                             </li>
                         </ul>
