@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="D:\Projects\SAG\BACK\SERVER" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="True" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="Web.config" publishTime="09/07/2012 16:24:05" />
+    <file relUrl="bin/SAGDAL.dll" publishTime="09/07/2012 16:19:30" />
+    <file relUrl="images/glyphicons-halflings-white.png" publishTime="08/25/2012 23:39:02" />
+    <file relUrl="bin/SAG.pdb" publishTime="09/07/2012 16:19:30" />
+    <file relUrl="AddRank.aspx" publishTime="09/03/2012 19:23:22" />
+    <file relUrl="AddCust.aspx" publishTime="09/04/2012 15:54:28" />
+    <file relUrl="bin/SAGDAL.pdb" publishTime="09/07/2012 16:19:30" />
+    <file relUrl="AddBranch.aspx" publishTime="09/04/2012 16:50:40" />
+    <file relUrl="bin/SAG.dll" publishTime="09/07/2012 16:19:31" />
+    <file relUrl="js/jquery.js" publishTime="08/25/2012 23:39:32" />
+    <file relUrl="images/glyphicons-halflings.png" publishTime="08/25/2012 23:39:02" />
+    <file relUrl="admin.Master" publishTime="09/07/2012 16:14:35" />
+    <file relUrl="AddDistributor.aspx" publishTime="09/04/2012 15:55:48" />
+    <file relUrl="css/bootstrap.min.css" publishTime="08/26/2012 00:05:44" />
+    <file relUrl="js/bootstrap-dropdown.js" publishTime="08/25/2012 23:39:32" />
+    <file relUrl="default.aspx" publishTime="08/30/2012 00:01:40" />
+    <file relUrl="bin/AjaxControlToolkit.dll" publishTime="11/16/2011 14:26:04" />
+  </publishProfile>
+</publishData>

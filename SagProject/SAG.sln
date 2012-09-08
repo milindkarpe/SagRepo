@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAG", "SAG\SAG.csproj", "{7EADC761-2504-4CE4-AB96-4DD9BFC70724}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAGDAL", "SAGDAL\SAGDAL.csproj", "{F3F5C827-6A29-4039-AFC9-2BC6888CED90}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7EADC761-2504-4CE4-AB96-4DD9BFC70724}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EADC761-2504-4CE4-AB96-4DD9BFC70724}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EADC761-2504-4CE4-AB96-4DD9BFC70724}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EADC761-2504-4CE4-AB96-4DD9BFC70724}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3F5C827-6A29-4039-AFC9-2BC6888CED90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3F5C827-6A29-4039-AFC9-2BC6888CED90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3F5C827-6A29-4039-AFC9-2BC6888CED90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3F5C827-6A29-4039-AFC9-2BC6888CED90}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
