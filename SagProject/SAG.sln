@@ -6,6 +6,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAGDAL", "SAGDAL\SAGDAL.csproj", "{F3F5C827-6A29-4039-AFC9-2BC6888CED90}"
 EndProject
 Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 3
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = SAG\\SAG.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = SAG\\
+		SccProjectUniqueName2 = SAGDAL\\SAGDAL.csproj
+		SccLocalPath2 = .
+		SccProjectFilePathRelativizedFromConnection2 = SAGDAL\\
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU

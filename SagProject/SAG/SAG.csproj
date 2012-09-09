@@ -15,6 +15,10 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <UseIISExpress>false</UseIISExpress>
     <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -54,12 +58,12 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AddBranch.aspx" />
-    <Content Include="AddCust.aspx" />
-    <Content Include="AddDistributor.aspx" />
-    <Content Include="AddRank.aspx" />
+    <Content Include="Admin\AddBranch.aspx" />
+    <Content Include="Admin\AddCust.aspx" />
+    <Content Include="Admin\AddDistributor.aspx" />
+    <Content Include="Admin\AddRank.aspx" />
     <Content Include="css\bootstrap.min.css" />
-    <Content Include="default.aspx" />
+    <Content Include="Admin\default.aspx" />
     <Content Include="images\glyphicons-halflings-white.png" />
     <Content Include="images\glyphicons-halflings.png" />
     <Content Include="js\bootstrap-dropdown.js" />
@@ -73,46 +77,46 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddBranch.aspx.cs">
+    <Compile Include="Admin\AddBranch.aspx.cs">
       <DependentUpon>AddBranch.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AddBranch.aspx.designer.cs">
+    <Compile Include="Admin\AddBranch.aspx.designer.cs">
       <DependentUpon>AddBranch.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AddCust.aspx.cs">
+    <Compile Include="Admin\AddCust.aspx.cs">
       <DependentUpon>AddCust.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AddCust.aspx.designer.cs">
+    <Compile Include="Admin\AddCust.aspx.designer.cs">
       <DependentUpon>AddCust.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AddDistributor.aspx.cs">
+    <Compile Include="Admin\AddDistributor.aspx.cs">
       <DependentUpon>AddDistributor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AddDistributor.aspx.designer.cs">
+    <Compile Include="Admin\AddDistributor.aspx.designer.cs">
       <DependentUpon>AddDistributor.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AddRank.aspx.cs">
+    <Compile Include="Admin\AddRank.aspx.cs">
       <DependentUpon>AddRank.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AddRank.aspx.designer.cs">
+    <Compile Include="Admin\AddRank.aspx.designer.cs">
       <DependentUpon>AddRank.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admin.Master.cs">
+    <Compile Include="Admin\admin.Master.cs">
       <DependentUpon>admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admin.Master.designer.cs">
+    <Compile Include="Admin\admin.Master.designer.cs">
       <DependentUpon>admin.Master</DependentUpon>
     </Compile>
-    <Compile Include="default.aspx.cs">
+    <Compile Include="Admin\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="default.aspx.designer.cs">
+    <Compile Include="Admin\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -121,7 +125,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="admin.Master" />
+    <Content Include="Admin\admin.Master" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SAGDAL\SAGDAL.csproj">
