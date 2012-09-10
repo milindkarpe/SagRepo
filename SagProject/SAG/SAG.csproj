@@ -40,6 +40,7 @@
   <ItemGroup>
     <Reference Include="AjaxControlToolkit, Version=3.5.51116.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Projects\SAG\SAG\bin\AjaxControlToolkit.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -62,13 +63,16 @@
     <Content Include="Admin\AddCust.aspx" />
     <Content Include="Admin\AddDistributor.aspx" />
     <Content Include="Admin\AddRank.aspx" />
+    <Content Include="Admin\FreshBusiness.aspx" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="Admin\default.aspx" />
     <Content Include="images\glyphicons-halflings-white.png" />
     <Content Include="images\glyphicons-halflings.png" />
     <Content Include="js\bootstrap-dropdown.js" />
     <Content Include="js\jquery.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -118,6 +122,13 @@
     </Compile>
     <Compile Include="Admin\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\FreshBusiness.aspx.cs">
+      <DependentUpon>FreshBusiness.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\FreshBusiness.aspx.designer.cs">
+      <DependentUpon>FreshBusiness.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

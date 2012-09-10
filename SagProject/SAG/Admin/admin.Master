@@ -39,6 +39,8 @@
                                     <li class="divider"></li>
                                     <li><a  href="AddDistributor.aspx">Distributor</a></li>
                                     <li><a  href="AddCust.aspx">Customer</a></li>
+                                    <li class="divider"></li>
+                                    <li><a  href="FreshBusiness.aspx">Fresh Business</a></li>
                                 </ul>
                             </li>
                         </ul>
