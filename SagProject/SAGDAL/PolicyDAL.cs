@@ -42,5 +42,36 @@ namespace SAGDAL
 
         }
 
+        public DataSet BindPlanType()
+        {
+            return DAL.ExecuteDatasetSP("SPBindPlanType");
+        }
+
+        public DataSet BindPlan(int PTID)
+        {
+            SqlParameter[] ParameterArray = { new SqlParameter("@PTID", DbType.Int16) };
+
+            ParameterArray[0].Value = PTID;
+
+            return DAL.ExecuteDatasetSP("SPBindPlan", ParameterArray);
+        }
+
+        public DataSet GetCustomerDetailsDAL(Int64 CID)
+        {
+            SqlParameter[] ParameterArray = { new SqlParameter("@CID", DbType.Int64) };
+
+            ParameterArray[0].Value = CID;
+
+            return DAL.ExecuteDatasetSP("SPGetCustomerDetails", ParameterArray);
+        }
+
+        public DataSet GetIntroducerDetailsDAL(Int64 DID)
+        {
+            SqlParameter[] ParameterArray = { new SqlParameter("@DID", DbType.Int64) };
+
+            ParameterArray[0].Value = DID;
+
+            return DAL.ExecuteDatasetSP("SPGetIntroducerDetails", ParameterArray);
+        }
     }
 }

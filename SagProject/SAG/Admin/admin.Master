@@ -15,7 +15,7 @@
             <div class="navbar-inner">
                 <div class="container">
                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
-                        class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                        class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"><img alt="logo" src="../images/Logo.png"></span>
                     </a><a class="brand" href="../">SAG Sale & Foods</a>
                     <div class="nav-collapse" id="main-menu">
                         <ul class="nav" id="main-menu-left">
@@ -45,7 +45,7 @@
                             </li>
                         </ul>
                         <ul class="nav pull-right" id="main-menu-right">
-                            <li><a> Welcome Guest</a></li>
+                            <li><a > Welcome Guest</a></li>
                          
                         </ul>
                     </div>

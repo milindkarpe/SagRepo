@@ -13,53 +13,54 @@ namespace SAG.Admin
     {
         PolicyDAL PDAL = new PolicyDAL();
 
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                BindDDL("PlanType", "PlanType", "PTID", ddlPlanType);
+                BindPlanTypeDDL();
             }
         }
 
-        public void BindDDL(String TableName, string ColumnName, String IDColumn, DropDownList DDLName)
+        public void BindPlanTypeDDL()
         {
-            DataSet dsTemp = clsDb.GetDatasets("Select * from " + TableName.ToString());
+            DataSet dsTemp = PDAL.BindPlanType();
 
             if (dsTemp.Tables[0].Rows.Count > 0)
             {
-                DDLName.DataSource = dsTemp.Tables[0];
+                ddlPlanType.DataSource = dsTemp.Tables[0];
 
-                DDLName.DataTextField = ColumnName.ToString();
-                DDLName.DataValueField = IDColumn.ToString();
+                ddlPlanType.DataTextField = "PlanType";
+                ddlPlanType.DataValueField = "PTID";
 
-                DDLName.DataBind();
+                ddlPlanType.DataBind();
 
-                DDLName.Items.Insert(0, new ListItem("Select", "00"));
+                ddlPlanType.Items.Insert(0, new ListItem("Select", "00"));
             }
         }
 
-        public void BindPlanDDL(String TableName, string ColumnName, String IDColumn, DropDownList DDLName)
+        public void BindPlanDDL(int PTID)
         {
-            DataSet dsTemp = clsDb.GetDatasets("Select * from [" + TableName.ToString() + "] where PTID=" + ddlPlanType.SelectedValue.ToString());
+            DataSet dsTemp = PDAL.BindPlan(PTID);
 
             if (dsTemp.Tables[0].Rows.Count > 0)
             {
-                DDLName.DataSource = dsTemp.Tables[0];
+                ddlPlanName.DataSource = dsTemp.Tables[0];
 
-                DDLName.DataTextField = ColumnName.ToString();
-                DDLName.DataValueField = IDColumn.ToString();
+                ddlPlanName.DataTextField = "PlanName";
+                ddlPlanName.DataValueField = "PID";
 
-                DDLName.DataBind();
+                ddlPlanName.DataBind();
 
-                DDLName.Items.Insert(0, new ListItem("Select", "00"));
+                ddlPlanName.Items.Insert(0, new ListItem("Select", "00"));
             }
         }
 
         protected void ddlPlanType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            BindPlanDDL("Plan", "PlanName", "PID", ddlPlanName);
-
             int PT = int.Parse(ddlPlanType.SelectedValue.ToString());
+            
+            BindPlanDDL(PT);
 
             if (PT > 1)
             {
@@ -74,7 +75,7 @@ namespace SAG.Admin
 
         protected void txtCustCode_TextChanged(object sender, EventArgs e)
         {
-            DataSet dsCust = clsDb.GetDatasets("Select * from Customer where CID=" + txtCustCode.Text);
+            DataSet dsCust = PDAL.GetCustomerDetailsDAL(Int64.Parse(txtCustCode.Text));
 
             if (dsCust.Tables[0].Rows.Count > 0)
             {
@@ -91,7 +92,7 @@ namespace SAG.Admin
 
         protected void txtIntroCode_TextChanged(object sender, EventArgs e)
         {
-            DataSet dsCust = clsDb.GetDatasets("Select * from Distributor where DID=" + txtIntroCode.Text);
+            DataSet dsCust = PDAL.GetIntroducerDetailsDAL(Int64.Parse(txtIntroCode.Text));
 
             if (dsCust.Tables[0].Rows.Count > 0)
             {
