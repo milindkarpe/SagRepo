@@ -43,57 +43,57 @@ namespace SAG
         {
             try
             {
-                //DistDAL.SaveDistributorDAL(int.Parse(ddlRank.SelectedValue.ToString()),
-                //                            txtIntroducer.Text,
-                //                            ddlPre.SelectedItem.Text.ToString(),
-                //                            txtName.Text,
-                //                            ddlPreSDW.SelectedItem.Text.ToString(),
-                //                            txtSDW.Text,
-                //                            txtPan.Text,
-                //                            txtEmail.Text,
-                //                            txtPreAdd.Text,
-                //                            txtPrePin.Text,
-                //                            txtPerAdd.Text,
-                //                            txtPerPin.Text,
-                //                            txtMobile.Text,
-                //                            txtTelephone.Text,
-                //                            Convert.ToDateTime(txtDOB.Text),
-                //                            int.Parse(txtAge.Text),
-                //                            txtNominee.Text,
-                //                            txtRelation.Text,
-                //                            Convert.ToDateTime(txtDBONom.Text),
-                //                            int.Parse(txtAgeNom.Text),
-                //                            Convert.ToDateTime(txtJoinDate.Text),
-                //                            ddlCSC.SelectedValue.ToString()
-                //                            );
+                DistDAL.SaveDistributorDAL(int.Parse(ddlRank.SelectedValue.ToString()),
+                                            txtIntroducer.Text,
+                                            ddlPre.SelectedItem.Text.ToString(),
+                                            txtName.Text,
+                                            ddlPreSDW.SelectedItem.Text.ToString(),
+                                            txtSDW.Text,
+                                            txtPan.Text,
+                                            txtEmail.Text,
+                                            txtPreAdd.Text,
+                                            txtPrePin.Text,
+                                            txtPerAdd.Text,
+                                            txtPerPin.Text,
+                                            txtMobile.Text,
+                                            txtTelephone.Text,
+                                            Convert.ToDateTime(txtDOB.Text),
+                                            int.Parse(txtAge.Text),
+                                            txtNominee.Text,
+                                            txtRelation.Text,
+                                            Convert.ToDateTime(txtDBONom.Text),
+                                            int.Parse(txtAgeNom.Text),
+                                            Convert.ToDateTime(txtJoinDate.Text),
+                                            ddlCSC.SelectedValue.ToString()
+                                            );
 
-                String strInsert = "Insert into Distributor(RankID,introducer,preName,Name,preSdw,sdwName,pancard,email,preAddress,prePincode,";
-                strInsert += " perAddress,perPincode,mobile,telephone,dob,age,nominee,relation,nomDob,nomAge,joinDate,branchId)";
-                strInsert += "Values(";
-                strInsert += int.Parse(ddlRank.SelectedValue.ToString()) + ",";
-                strInsert += "'" + txtIntroducer.Text + "',";
-                strInsert += "'" + ddlPre.SelectedItem.Text.ToString() + "',";
-                strInsert += "'" + txtName.Text.ToString() + "',";
-                strInsert += "'" + ddlPreSDW.SelectedItem.Text.ToString() + "',";
-                strInsert += "'" + txtSDW.Text.ToString() + "',";
-                strInsert += "'" + txtPan.Text.ToString() + "',";
-                strInsert += "'" + txtEmail.Text.ToString() + "',";
-                strInsert += "'" + txtPreAdd.Text.ToString() + "',";
-                strInsert += "'" + txtPrePin.Text.ToString() + "',";
-                strInsert += "'" + txtPerAdd.Text.ToString() + "',";
-                strInsert += "'" + txtPerPin.Text.ToString() + "',";
-                strInsert += "'" + txtMobile.Text.ToString() + "',";
-                strInsert += "'" + txtTelephone.Text.ToString() + "',";
-                strInsert += "'" + Convert.ToDateTime(txtDOB.Text.ToString()) + "',";
-                strInsert += "'" + txtAge.Text.ToString() + "',";
-                strInsert += "'" + txtNominee.Text.ToString() + "',";
-                strInsert += "'" + txtRelation.Text.ToString() + "',";
-                strInsert += "'" + Convert.ToDateTime(txtDBONom.Text.ToString()) + "',";
-                strInsert += "'" + txtAgeNom.Text.ToString() + "',";
-                strInsert += "'" + Convert.ToDateTime(txtJoinDate.Text.ToString()) + "',";
-                strInsert += "'" + ddlCSC.SelectedValue.ToString() + "')";
+                //String strInsert = "Insert into Distributor(RankID,introducer,preName,Name,preSdw,sdwName,pancard,email,preAddress,prePincode,";
+                //strInsert += " perAddress,perPincode,mobile,telephone,dob,age,nominee,relation,nomDob,nomAge,joinDate,branchId)";
+                //strInsert += "Values(";
+                //strInsert += int.Parse(ddlRank.SelectedValue.ToString()) + ",";
+                //strInsert += "'" + txtIntroducer.Text + "',";
+                //strInsert += "'" + ddlPre.SelectedItem.Text.ToString() + "',";
+                //strInsert += "'" + txtName.Text.ToString() + "',";
+                //strInsert += "'" + ddlPreSDW.SelectedItem.Text.ToString() + "',";
+                //strInsert += "'" + txtSDW.Text.ToString() + "',";
+                //strInsert += "'" + txtPan.Text.ToString() + "',";
+                //strInsert += "'" + txtEmail.Text.ToString() + "',";
+                //strInsert += "'" + txtPreAdd.Text.ToString() + "',";
+                //strInsert += "'" + txtPrePin.Text.ToString() + "',";
+                //strInsert += "'" + txtPerAdd.Text.ToString() + "',";
+                //strInsert += "'" + txtPerPin.Text.ToString() + "',";
+                //strInsert += "'" + txtMobile.Text.ToString() + "',";
+                //strInsert += "'" + txtTelephone.Text.ToString() + "',";
+                //strInsert += "'" + Convert.ToDateTime(txtDOB.Text.ToString()) + "',";
+                //strInsert += "'" + txtAge.Text.ToString() + "',";
+                //strInsert += "'" + txtNominee.Text.ToString() + "',";
+                //strInsert += "'" + txtRelation.Text.ToString() + "',";
+                //strInsert += "'" + Convert.ToDateTime(txtDBONom.Text.ToString()) + "',";
+                //strInsert += "'" + txtAgeNom.Text.ToString() + "',";
+                //strInsert += "'" + Convert.ToDateTime(txtJoinDate.Text.ToString()) + "',";
+                //strInsert += "'" + ddlCSC.SelectedValue.ToString() + "')";
 
-                clsDb.InsertUpdate(strInsert.ToString());
+                //clsDb.InsertUpdate(strInsert.ToString());
 
                 ResetAll();
 

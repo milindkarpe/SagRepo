@@ -3,6 +3,30 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+	<script type="text/javascript">
+	    $(document).ready(function () {
+	        SearchText();
+	    });
+	    function SearchText() {
+	        $(".autosuggest").autocomplete({
+	            source: function (request, response) {
+	                $.ajax({
+	                    type: "POST",
+	                    contentType: "application/json; charset=utf-8",
+	                    url: "freshbusiness.aspx/GetAutoCompleteData",
+	                    data: "{'username':'" + document.getElementById('txtCustCode').value + "'}",
+	                    dataType: "json",
+	                    success: function (data) {
+	                        response(data.d);
+	                    },
+	                    error: function (result) {
+	                        alert("Error");
+	                    }
+	                });
+	            }
+	        });
+	    }
+	</script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <header class="jumbotron subhead" id="Header1">
@@ -11,50 +35,28 @@
                 Fresh Business</h1>
         </div>
         <div align="center">
-        <asp:Label ID="lblMsg" runat="server" CssClass="alert alert-success" Width="90%" Visible="false"></asp:Label>
+            <asp:Label ID="lblMsg" runat="server" CssClass="alert alert-success" Width="90%"
+                Visible="false"></asp:Label>
         </div>
     </header>
     <asp:ToolkitScriptManager ID="sm" runat="server">
     </asp:ToolkitScriptManager>
     <div>
         <table class="table table-bordered table-condensed">
-            <%--   <tr>
-                <td>
-                </td>
-                <td>
-                </td>
-                <td>
-                </td>
-                <td>
-                </td>
-            </tr>--%>
-            <%--   <tr>
-                <td>
-                    CSC
-                </td>
-                <td>
-                    <asp:DropDownList ID="ddlCSC" runat="server">
-                        <asp:ListItem>112</asp:ListItem>
-                        <asp:ListItem>113</asp:ListItem>
-                        <asp:ListItem>114</asp:ListItem>
-                    </asp:DropDownList>
-                </td>
-                <td>
-                    OldImg Code
-                </td>
-                <td>
-                    <asp:TextBox ID="txtOldImg" runat="server"></asp:TextBox>
-                </td>
-            </tr>--%>
             <tr>
                 <td>
                     Plan Type
                 </td>
                 <td>
-                    <asp:DropDownList ID="ddlPlanType" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlPlanType_SelectedIndexChanged" TabIndex="0">
-                    </asp:DropDownList>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlPlanType"
-                        SetFocusOnError="true" ErrorMessage="*" InitialValue="0"></asp:RequiredFieldValidator>
+                    <asp:UpdatePanel ID="UpdatePanel7" runat="server">
+                        <ContentTemplate>
+                            <asp:DropDownList ID="ddlPlanType" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlPlanType_SelectedIndexChanged"
+                                TabIndex="0">
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlPlanType"
+                                SetFocusOnError="true" ErrorMessage="*" InitialValue="0"></asp:RequiredFieldValidator>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                 </td>
                 <td>
                     Plan Name
@@ -75,7 +77,7 @@
                     Mode of Payment
                 </td>
                 <td>
-                    <asp:UpdatePanel ID="UpdatePanel1" runat="server" >
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
                             <asp:DropDownList ID="ddlPayMode" runat="server" TabIndex="2">
                                 <asp:ListItem Value="0">Select</asp:ListItem>
@@ -99,10 +101,14 @@
                     Customer Code
                 </td>
                 <td>
-                    <asp:TextBox ID="txtCustCode" runat="server" CssClass="input-mini" AutoPostBack="True"
-                        OnTextChanged="txtCustCode_TextChanged" TabIndex="3"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtCustCode"
-                        SetFocusOnError="true" ErrorMessage="*"></asp:RequiredFieldValidator>
+                    <asp:UpdatePanel ID="UpdatePanel8" runat="server">
+                        <ContentTemplate>
+                            <asp:TextBox ID="txtCustCode" runat="server" CssClass="input-mini" AutoPostBack="True"
+                                OnTextChanged="txtCustCode_TextChanged" TabIndex="3"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtCustCode"
+                                SetFocusOnError="true" ErrorMessage="*"></asp:RequiredFieldValidator>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                 </td>
                 <td>
                     Customer Name
@@ -120,10 +126,14 @@
                     Introducer
                 </td>
                 <td>
-                    <asp:TextBox ID="txtIntroCode" runat="server" CssClass="input-mini" AutoPostBack="True"
-                        OnTextChanged="txtIntroCode_TextChanged" TabIndex="4"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtIntroCode"
-                        SetFocusOnError="true" ErrorMessage="*"></asp:RequiredFieldValidator>
+                    <asp:UpdatePanel ID="UpdatePanel9" runat="server">
+                        <ContentTemplate>
+                            <asp:TextBox ID="txtIntroCode" runat="server" CssClass="input-mini" AutoPostBack="True"
+                                OnTextChanged="txtIntroCode_TextChanged" TabIndex="4"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtIntroCode"
+                                SetFocusOnError="true" ErrorMessage="*"></asp:RequiredFieldValidator>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                 </td>
                 <td>
                     Introducer Name
@@ -149,7 +159,8 @@
                     Amount Received Mode
                 </td>
                 <td>
-                    <asp:DropDownList ID="ddlAmtRecMode" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlAmtRecMode_SelectedIndexChanged" TabIndex="7">
+                    <asp:DropDownList ID="ddlAmtRecMode" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlAmtRecMode_SelectedIndexChanged"
+                        TabIndex="7">
                         <asp:ListItem Value="0">Cash</asp:ListItem>
                         <asp:ListItem Value="1">Cheque</asp:ListItem>
                     </asp:DropDownList>
@@ -197,7 +208,8 @@
                 <td>
                     <asp:UpdatePanel ID="UpdatePanel5" runat="server">
                         <ContentTemplate>
-                            <asp:TextBox ID="txtBankName" runat="server" Text="N/A" CssClass="input disabled" TabIndex="9"></asp:TextBox>
+                            <asp:TextBox ID="txtBankName" runat="server" Text="N/A" CssClass="input disabled"
+                                TabIndex="9"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtChqNo"
                                 SetFocusOnError="true" ErrorMessage="*"></asp:RequiredFieldValidator>
                         </ContentTemplate>
@@ -209,8 +221,7 @@
                     Purchase Date
                 </td>
                 <td colspan="3">
-                    <asp:TextBox ID="txtPurDate" runat="server" CssClass="input-medium disabled" 
-                        TabIndex="10" ></asp:TextBox>
+                    <asp:TextBox ID="txtPurDate" runat="server" CssClass="input-medium disabled" TabIndex="10"></asp:TextBox>
                     <asp:CalendarExtender ID="cxDBO" runat="server" TargetControlID="txtPurDate" PopupButtonID="imgCal"
                         Format="dd/MMM/yyyy" Animated="true">
                     </asp:CalendarExtender>
@@ -219,14 +230,14 @@
                         SetFocusOnError="true" ErrorMessage="*"></asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtPurDate"
                         CssClass="RequiredFieldValidator" ErrorMessage="Date must in proper format" ValidationExpression="^(([0-9])|([0-2][0-9])|([3][0-1]))\/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\/\d{4}$"></asp:RegularExpressionValidator>
-                </td>                
+                </td>
             </tr>
             <tr>
                 <td colspan="4">
-                    <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn btn-info" 
-                        TabIndex="11" onclick="btnSave_Click"/>
-                    <asp:Button ID="btnReset" runat="server" Text="Reset" CssClass="btn btn-info" 
-                        ValidationGroup="Nothing" TabIndex="12" onclick="btnReset_Click"/>
+                    <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn btn-info" TabIndex="11"
+                        OnClick="btnSave_Click" />
+                    <asp:Button ID="btnReset" runat="server" Text="Reset" CssClass="btn btn-info" ValidationGroup="Nothing"
+                        TabIndex="12" OnClick="btnReset_Click" />
                 </td>
             </tr>
         </table>
