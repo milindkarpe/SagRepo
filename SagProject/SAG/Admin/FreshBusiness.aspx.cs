@@ -12,7 +12,7 @@ namespace SAG.Admin
     public partial class FreshBusiness : System.Web.UI.Page
     {
         PolicyDAL PDAL = new PolicyDAL();
-
+        string PolicyID = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -139,7 +139,7 @@ namespace SAG.Admin
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            string PolicyID = PDAL.SavePolicyDAL(int.Parse(ddlPlanType.SelectedValue)
+            PolicyID = PDAL.SavePolicyDAL(int.Parse(ddlPlanType.SelectedValue)
                                                 , int.Parse(ddlPlanName.SelectedValue)
                                                 , ddlPayMode.SelectedValue
                                                 , ddlPayMode.SelectedItem.Text
@@ -156,7 +156,8 @@ namespace SAG.Admin
 
             lblMsg.Visible = true;
             lblMsg.Text = "Policy Stored Successfully Policy ID : " + PolicyID.ToString();
-
+            lnbCertificateLink.Visible = true;
+            lnbCertificateLink.NavigateUrl = "~/admin/certificate.aspx?policyid="+PolicyID;
         }
 
         protected void ResetAll()
@@ -176,12 +177,17 @@ namespace SAG.Admin
             txtNetAmt.Text = "";
             txtPurDate.Text = "";
             txtRegFees.Text = "";
+
+            lblMsg.Visible = false;
+            lnbCertificateLink.NavigateUrl = "";
+            lnbCertificateLink.Visible = false;
         }
 
         protected void btnReset_Click(object sender, EventArgs e)
         {
             ResetAll();
-            lblMsg.Visible = false;
+
         }
+
     }
 }

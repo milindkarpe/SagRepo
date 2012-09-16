@@ -13,6 +13,15 @@ namespace SAG.Admin {
     public partial class FreshBusiness {
         
         /// <summary>
+        /// sm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ToolkitScriptManager sm;
+        
+        /// <summary>
         /// lblMsg control.
         /// </summary>
         /// <remarks>
@@ -22,13 +31,13 @@ namespace SAG.Admin {
         protected global::System.Web.UI.WebControls.Label lblMsg;
         
         /// <summary>
-        /// sm control.
+        /// lnbCertificateLink control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.ToolkitScriptManager sm;
+        protected global::System.Web.UI.WebControls.HyperLink lnbCertificateLink;
         
         /// <summary>
         /// UpdatePanel7 control.

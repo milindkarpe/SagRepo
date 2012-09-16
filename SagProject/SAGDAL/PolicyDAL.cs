@@ -73,5 +73,14 @@ namespace SAGDAL
 
             return DAL.ExecuteDatasetSP("SPGetIntroducerDetails", ParameterArray);
         }
+
+        public DataSet BindCertificateDAL(Int64 PolicyID)
+        {
+            SqlParameter[] ParameterArray = { new SqlParameter("@PolicyID",SqlDbType.BigInt) };
+
+            ParameterArray[0].Value = PolicyID;
+
+            return DAL.ExecuteDatasetSP("SPBindCertificate", ParameterArray);
+        }
     }
 }

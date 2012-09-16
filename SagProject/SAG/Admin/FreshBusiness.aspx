@@ -3,45 +3,24 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-	<script type="text/javascript">
-	    $(document).ready(function () {
-	        SearchText();
-	    });
-	    function SearchText() {
-	        $(".autosuggest").autocomplete({
-	            source: function (request, response) {
-	                $.ajax({
-	                    type: "POST",
-	                    contentType: "application/json; charset=utf-8",
-	                    url: "freshbusiness.aspx/GetAutoCompleteData",
-	                    data: "{'username':'" + document.getElementById('txtCustCode').value + "'}",
-	                    dataType: "json",
-	                    success: function (data) {
-	                        response(data.d);
-	                    },
-	                    error: function (result) {
-	                        alert("Error");
-	                    }
-	                });
-	            }
-	        });
-	    }
-	</script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ToolkitScriptManager ID="sm" runat="server">
+    </asp:ToolkitScriptManager>
     <header class="jumbotron subhead" id="Header1">
         <div class="page-header">
             <h1>
                 Fresh Business</h1>
         </div>
         <div align="center">
-            <asp:Label ID="lblMsg" runat="server" CssClass="alert alert-success" Width="90%"
-                Visible="false"></asp:Label>
+            <asp:Label ID="lblMsg" runat="server" CssClass="alert alert-success"
+                Visible="false">
+            </asp:Label>
+            <asp:HyperLink ID="lnbCertificateLink" runat="server" Target="_blank" 
+                CssClass="alert alert-info" Visible="false" >Click Here To Generate Certificate</asp:HyperLink>
         </div>
     </header>
-    <asp:ToolkitScriptManager ID="sm" runat="server">
-    </asp:ToolkitScriptManager>
-    <div>
+    <div style="padding-top:10px;">
         <table class="table table-bordered table-condensed">
             <tr>
                 <td>

@@ -63,6 +63,7 @@
     <Content Include="Admin\AddCust.aspx" />
     <Content Include="Admin\AddDistributor.aspx" />
     <Content Include="Admin\AddRank.aspx" />
+    <Content Include="Admin\certificate.aspx" />
     <Content Include="Admin\FreshBusiness.aspx" />
     <Content Include="bin\AjaxControlToolkit.dll" />
     <Content Include="bin\SAG.dll" />
@@ -124,6 +125,13 @@
     </Compile>
     <Compile Include="Admin\admin.Master.designer.cs">
       <DependentUpon>admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\certificate.aspx.cs">
+      <DependentUpon>certificate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\certificate.aspx.designer.cs">
+      <DependentUpon>certificate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
