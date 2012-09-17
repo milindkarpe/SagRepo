@@ -9,8 +9,12 @@ namespace SAGDAL
 {
     public class PolicyDAL : BaseClassDAL
     {
-        public string SavePolicyDAL(int PolicyType, int PlanID, string PayMode,String PayModeText, Int64 CustCode, Int64 IntroCode, Int64 Amount,
-            string AmtRecMode, string ChqNo, string BankName, DateTime PurDate)
+        public string SavePolicyDAL(int PolicyType, int PlanID, string PayMode,String PayModeText, Int64 CustCode, Int64 IntroCode,
+                                    string AmtRecMode, string ChqNo, string BankName,
+                                    DateTime PurDate, DateTime DueDate, DateTime LastPayDate, DateTime ExpDate,
+                                    Double PlanAmount, Double InstallmentAmount, Double MaturityAmount,
+                                    String NomName, Int16 NomAge, DateTime NomDOB, String NomAdd,
+                                    String CustBankName, String BranchName, String AccNo, String AccType)
         {
             SqlParameter[] ParameterArray = {
                                                 new SqlParameter("@PolicyType", SqlDbType.Int),
@@ -19,11 +23,29 @@ namespace SAGDAL
                                                 new SqlParameter("@PayModeText", SqlDbType.VarChar),
                                                 new SqlParameter("@CustCode", SqlDbType.BigInt),
                                                 new SqlParameter("@IntroCode", SqlDbType.BigInt),
-                                                new SqlParameter("@Amount", SqlDbType.BigInt),
+                                                                                                
                                                 new SqlParameter("@AmtRecMode", SqlDbType.Text),
                                                 new SqlParameter("@ChqNo", SqlDbType.Text),
                                                 new SqlParameter("@BankName", SqlDbType.VarChar),
-                                                new SqlParameter("@PurDate", SqlDbType.DateTime)                                                
+
+                                                new SqlParameter("@PurDate", SqlDbType.DateTime),
+                                                new SqlParameter("@DueDate", SqlDbType.DateTime),
+                                                new SqlParameter("@LastPayDate", SqlDbType.DateTime),
+                                                new SqlParameter("@ExpDate", SqlDbType.DateTime),
+
+                                                new SqlParameter("@PlanAmount", SqlDbType.Float),
+                                                new SqlParameter("@InstallmentAmount", SqlDbType.Float),
+                                                new SqlParameter("@MaturityAmount", SqlDbType.Float),
+
+                                                new SqlParameter("@NomName", SqlDbType.VarChar),
+                                                new SqlParameter("@NomAge", SqlDbType.Int),
+                                                new SqlParameter("@NomDOB", SqlDbType.DateTime),
+                                                new SqlParameter("@NomAdd", SqlDbType.Text),
+
+                                                new SqlParameter("@CustBankName", SqlDbType.VarChar),
+                                                new SqlParameter("@BranchName", SqlDbType.VarChar),
+                                                new SqlParameter("@AccNo", SqlDbType.VarChar),
+                                                new SqlParameter("@AccType", SqlDbType.VarChar),
                                               };
 
             ParameterArray[0].Value = PolicyType;
@@ -31,12 +53,29 @@ namespace SAGDAL
             ParameterArray[2].Value = PayMode;
             ParameterArray[3].Value = PayModeText;
             ParameterArray[4].Value = CustCode;
-            ParameterArray[5].Value = IntroCode;
-            ParameterArray[6].Value = Amount;
-            ParameterArray[7].Value = AmtRecMode;
-            ParameterArray[8].Value = ChqNo;
-            ParameterArray[9].Value = BankName;
-            ParameterArray[10].Value = PurDate;            
+            ParameterArray[5].Value = IntroCode;            
+            ParameterArray[6].Value = AmtRecMode;
+            ParameterArray[7].Value = ChqNo;
+            ParameterArray[8].Value = BankName;
+            
+            ParameterArray[9].Value = PurDate;
+            ParameterArray[10].Value = DueDate;
+            ParameterArray[11].Value = LastPayDate;
+            ParameterArray[12].Value = ExpDate;
+
+            ParameterArray[13].Value = PlanAmount;
+            ParameterArray[14].Value = InstallmentAmount;
+            ParameterArray[15].Value = MaturityAmount;
+
+            ParameterArray[16].Value = NomName;
+            ParameterArray[17].Value = NomAge;
+            ParameterArray[18].Value = NomDOB;
+            ParameterArray[19].Value = NomAdd;
+
+            ParameterArray[16].Value = CustBankName;
+            ParameterArray[17].Value = BranchName;
+            ParameterArray[18].Value = AccNo;
+            ParameterArray[19].Value = AccType;
 
             return DAL.ExecuteMMScalarSP("SPSavePolicyFP", ParameterArray);
 
@@ -81,6 +120,15 @@ namespace SAGDAL
             ParameterArray[0].Value = PolicyID;
 
             return DAL.ExecuteDatasetSP("SPBindCertificate", ParameterArray);
+        }
+
+        public DataSet GetMFPUnitByPlanIDDAL(Int16 PlanID)
+        {
+            SqlParameter[] ParameterArray = { new SqlParameter("@PID", SqlDbType.Int) };
+
+            ParameterArray[0].Value = PlanID;
+
+            return DAL.ExecuteDatasetSP("SPGetMFPUnitByPlanID", ParameterArray);
         }
     }
 }

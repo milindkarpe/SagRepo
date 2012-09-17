@@ -20,7 +20,7 @@
                 CssClass="alert alert-info" Visible="false" >Click Here To Generate Certificate</asp:HyperLink>
         </div>
     </header>
-    <div style="padding-top:10px;">
+    <div style="padding-top: 10px;">
         <table class="table table-bordered table-condensed">
             <tr>
                 <td>
@@ -126,6 +126,94 @@
                 </td>
             </tr>
             <tr>
+                <td colspan="4">
+                    <b>Nominee Details</b>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Nominee Name
+                </td>
+                <td>
+                    <asp:TextBox ID="txtNomName" runat="server" CssClass="input"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtNomName"
+                        SetFocusOnError="true" ErrorMessage="*"></asp:RequiredFieldValidator>
+                </td>
+                <td>
+                    Nominee DOB
+                </td>
+                <td>
+                    <asp:TextBox ID="txtNomDOB" runat="server" CssClass="input-medium disabled"></asp:TextBox>
+                    <asp:CalendarExtender ID="cxNomDBO" runat="server" TargetControlID="txtNomDOB" PopupButtonID="imgNDOB"
+                        Format="dd/MMM/yyyy" Animated="true">
+                    </asp:CalendarExtender>
+                    <i id="imgNDOB" class="icon icon-calendar"></i>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtNomDOB"
+                        SetFocusOnError="true" ErrorMessage="*"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtNomDOB"
+                        CssClass="RequiredFieldValidator" ErrorMessage="Date must in proper format" ValidationExpression="^(([0-9])|([0-2][0-9])|([3][0-1]))\/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\/\d{4}$"></asp:RegularExpressionValidator>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Nominee Address
+                </td>
+                <td>
+                    <asp:TextBox ID="txtNomAdd" runat="server" CssClass="input" TextMode="MultiLine"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtNomAdd"
+                        SetFocusOnError="true" ErrorMessage="*"></asp:RequiredFieldValidator>
+                </td>
+                <td>
+                    Nominee Age
+                </td>
+                <td>
+                    <asp:TextBox ID="txtNomAge" runat="server" CssClass="input-mini"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="txtNomAge"
+                        SetFocusOnError="true" ErrorMessage="*"></asp:RequiredFieldValidator>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <b>Bank Details</b>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Bank Name
+                </td>
+                <td>
+                    <asp:TextBox ID="txtCustBankName" runat="server" CssClass="input"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtCustBankName"
+                        SetFocusOnError="true" ErrorMessage="*"></asp:RequiredFieldValidator>
+                </td>
+                <td>
+                    Branch Name
+                </td>
+                <td>
+                    <asp:TextBox ID="txtBranchName" runat="server" CssClass="input-medium disabled"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txtBranchName"
+                        SetFocusOnError="true" ErrorMessage="*"></asp:RequiredFieldValidator>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Account No
+                </td>
+                <td>
+                    <asp:TextBox ID="txtAccNo" runat="server" CssClass="input" TextMode="MultiLine"></asp:TextBox>
+                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txtBankAdd"
+                        SetFocusOnError="true" ErrorMessage="*"></asp:RequiredFieldValidator>--%>
+                </td>
+                <td>
+                    Account Type
+                </td>
+                <td>
+                    <asp:TextBox ID="txtAccType" runat="server" CssClass="input"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtAccType"
+                        SetFocusOnError="true" ErrorMessage="*"></asp:RequiredFieldValidator>
+                </td>
+            </tr>
+            <tr>
                 <td>
                     Amount Received
                 </td>
@@ -161,7 +249,8 @@
                 <td>
                     <asp:UpdatePanel ID="UpdatePanel4" runat="server">
                         <ContentTemplate>
-                            <asp:TextBox ID="txtChqNo" runat="server" CssClass="input-mini disabled" Text="000000"></asp:TextBox>
+                            <asp:TextBox ID="txtChqNo" runat="server" CssClass="input-mini disabled" Enabled="false"
+                                Text="000000"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtChqNo"
                                 SetFocusOnError="true" ErrorMessage="*" TabIndex="8"></asp:RequiredFieldValidator>
                         </ContentTemplate>
@@ -187,7 +276,7 @@
                 <td>
                     <asp:UpdatePanel ID="UpdatePanel5" runat="server">
                         <ContentTemplate>
-                            <asp:TextBox ID="txtBankName" runat="server" Text="N/A" CssClass="input disabled"
+                            <asp:TextBox ID="txtBankName" runat="server" Text="N/A" Enabled="false" CssClass="input disabled"
                                 TabIndex="9"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtChqNo"
                                 SetFocusOnError="true" ErrorMessage="*"></asp:RequiredFieldValidator>
