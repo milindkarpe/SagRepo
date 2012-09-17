@@ -9,7 +9,7 @@ namespace SAGDAL
 {
     public class PolicyDAL : BaseClassDAL
     {
-        public string SavePolicyDAL(int PolicyType, int PlanID, string PayMode,String PayModeText, Int64 CustCode, Int64 IntroCode,
+        public string SavePolicyDAL(int PolicyType, int PlanID, int PayMode,String PayModeText, Int64 CustCode, Int64 IntroCode,
                                     string AmtRecMode, string ChqNo, string BankName,
                                     DateTime PurDate, DateTime DueDate, DateTime LastPayDate, DateTime ExpDate,
                                     Double PlanAmount, Double InstallmentAmount, Double MaturityAmount,
@@ -25,8 +25,8 @@ namespace SAGDAL
                                                 new SqlParameter("@IntroCode", SqlDbType.BigInt),
                                                                                                 
                                                 new SqlParameter("@AmtRecMode", SqlDbType.Text),
-                                                new SqlParameter("@ChqNo", SqlDbType.Text),
-                                                new SqlParameter("@BankName", SqlDbType.VarChar),
+                                                new SqlParameter("@ChqNo", SqlDbType.VarChar),
+                                                new SqlParameter("@BankName", SqlDbType.Text),
 
                                                 new SqlParameter("@PurDate", SqlDbType.DateTime),
                                                 new SqlParameter("@DueDate", SqlDbType.DateTime),

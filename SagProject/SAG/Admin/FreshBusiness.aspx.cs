@@ -236,7 +236,7 @@ namespace SAG.Admin
 
                 PolicyID = PDAL.SavePolicyDAL(int.Parse(ddlPlanType.SelectedValue)
                                                     , int.Parse(ddlPlanName.SelectedValue)
-                                                    , ddlPayMode.SelectedValue
+                                                    , int.Parse(ddlPayMode.SelectedValue)
                                                     , ddlPayMode.SelectedItem.Text
                                                     , Int64.Parse(txtCustCode.Text)
                                                     , Int64.Parse(txtIntroCode.Text)

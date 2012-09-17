@@ -200,7 +200,7 @@
                     Account No
                 </td>
                 <td>
-                    <asp:TextBox ID="txtAccNo" runat="server" CssClass="input" TextMode="MultiLine"></asp:TextBox>
+                    <asp:TextBox ID="txtAccNo" runat="server" CssClass="input"></asp:TextBox>
                     <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txtBankAdd"
                         SetFocusOnError="true" ErrorMessage="*"></asp:RequiredFieldValidator>--%>
                 </td>
