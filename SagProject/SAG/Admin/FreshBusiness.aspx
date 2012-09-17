@@ -170,6 +170,9 @@
                     <asp:TextBox ID="txtNomAge" runat="server" CssClass="input-mini"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="txtNomAge"
                         SetFocusOnError="true" ErrorMessage="*"></asp:RequiredFieldValidator>
+                    <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Enter Number Only"
+                        ControlToValidate="txtNomAge" Type="Integer" SetFocusOnError="true" MinimumValue="18"
+                        MaximumValue="99"></asp:RangeValidator>
                 </td>
             </tr>
             <tr>
