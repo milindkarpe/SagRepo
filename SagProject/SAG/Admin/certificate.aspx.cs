@@ -44,14 +44,24 @@ namespace SAG.Admin
                     lblPurchaser.Text = ds.Tables[0].Rows[0]["Name"].ToString();
                     lblAddress.Text = ds.Tables[0].Rows[0]["perAddress"].ToString() + "<br> Mobile - "+ ds.Tables[0].Rows[0]["mobile"].ToString();
                     lblPurchaserAge.Text = ds.Tables[0].Rows[0]["Age"].ToString();
-                    lblNominee.Text = ds.Tables[0].Rows[0]["Nominee"].ToString();
+                    lblNominee.Text = ds.Tables[0].Rows[0]["NomName"].ToString();
                     lblNomineeAge.Text = ds.Tables[0].Rows[0]["nomAge"].ToString();
-                    lblRelation.Text = ds.Tables[0].Rows[0]["Relation"].ToString();
-                    lblRegNoDate.Text =PolicyId.ToString()+"  "+ ds.Tables[0].Rows[0]["StartDate"].ToString();
+                    lblRelation.Text = ds.Tables[0].Rows[0]["NomAdd"].ToString();
+                    lblRegNoDate.Text =PolicyId.ToString()+"  -  "+ ds.Tables[0].Rows[0]["StartDate"].ToString();
                     lblPlan.Text = ds.Tables[0].Rows[0]["PlanType"].ToString() + " " + ds.Tables[0].Rows[0]["PlanName"].ToString(); ;
                     lblPayMode.Text = ds.Tables[0].Rows[0]["PayModeText"].ToString();
-                    lblAmtConsidaration.Text = ds.Tables[0].Rows[0]["Amount"].ToString();
+                    
+                    lblAmtConsidaration.Text = ds.Tables[0].Rows[0]["PlanAmount"].ToString();
+                    lblInstallAmt.Text = ds.Tables[0].Rows[0]["InstallmentAmount"].ToString();
+                    lblSumPayable.Text = ds.Tables[0].Rows[0]["MaturityAmount"].ToString();
+                    lblDeathAmount.Text = ds.Tables[0].Rows[0]["DeathAmount"].ToString();
+                    lblMRAmount.Text = ds.Tables[0].Rows[0]["MRAmount"].ToString();
 
+                    lblDueDate.Text = ds.Tables[0].Rows[0]["DueDate"].ToString();
+                    lblLastPayDate.Text = ds.Tables[0].Rows[0]["LastPayDate"].ToString();
+                    lblExpiryDate.Text = ds.Tables[0].Rows[0]["ExpDate"].ToString();
+
+                    lblSeCode.Text = ds.Tables[0].Rows[0]["DID"].ToString();
                 }
             
             }

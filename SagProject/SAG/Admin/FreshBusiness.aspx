@@ -156,10 +156,10 @@
             </tr>
             <tr>
                 <td>
-                    Nominee Address
+                    Relation
                 </td>
                 <td>
-                    <asp:TextBox ID="txtNomAdd" runat="server" CssClass="input" TextMode="MultiLine"></asp:TextBox>
+                    <asp:TextBox ID="txtNomAdd" runat="server" CssClass="input"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtNomAdd"
                         SetFocusOnError="true" ErrorMessage="*"></asp:RequiredFieldValidator>
                 </td>
@@ -193,7 +193,7 @@
                     Branch Name
                 </td>
                 <td>
-                    <asp:TextBox ID="txtBranchName" runat="server" CssClass="input-medium disabled"></asp:TextBox>
+                    <asp:TextBox ID="txtBranchName" runat="server" CssClass="input"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txtBranchName"
                         SetFocusOnError="true" ErrorMessage="*"></asp:RequiredFieldValidator>
                 </td>
@@ -224,6 +224,9 @@
                     <asp:TextBox ID="txtAmtRec" runat="server" CssClass="input-mini" TabIndex="5"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtAmtRec"
                         SetFocusOnError="true" ErrorMessage="*"></asp:RequiredFieldValidator>
+                    <asp:RangeValidator ID="RangeValidator2" runat="server" ErrorMessage="Enter Numbers Only"
+                        ControlToValidate="txtAmtRec" SetFocusOnError="true" Type="Double" MinimumValue="100"
+                        MaximumValue="9999999"></asp:RangeValidator>
                 </td>
                 <td>
                     Amount Received Mode
@@ -245,6 +248,9 @@
                         OnTextChanged="txtRegFees_TextChanged" TabIndex="6"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtRegFees"
                         SetFocusOnError="true" ErrorMessage="*"></asp:RequiredFieldValidator>
+                        <asp:RangeValidator ID="RangeValidator3" runat="server" ErrorMessage="Enter Numbers Only"
+                        ControlToValidate="txtRegFees" SetFocusOnError="true" Type="Double" MinimumValue="10"
+                        MaximumValue="9999999"></asp:RangeValidator>
                 </td>
                 <td>
                     Cheque Number

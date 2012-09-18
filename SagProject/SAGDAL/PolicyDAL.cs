@@ -14,7 +14,8 @@ namespace SAGDAL
                                     DateTime PurDate, DateTime DueDate, DateTime LastPayDate, DateTime ExpDate,
                                     Double PlanAmount, Double InstallmentAmount, Double MaturityAmount,
                                     String NomName, Int16 NomAge, DateTime NomDOB, String NomAdd,
-                                    String CustBankName, String BranchName, String AccNo, String AccType)
+                                    String CustBankName, String BranchName, String AccNo, String AccType,
+                                    Double DeathAmount,Double MRAmount)
         {
             SqlParameter[] ParameterArray = {
                                                 new SqlParameter("@PolicyType", SqlDbType.Int),
@@ -46,6 +47,9 @@ namespace SAGDAL
                                                 new SqlParameter("@BranchName", SqlDbType.VarChar),
                                                 new SqlParameter("@AccNo", SqlDbType.VarChar),
                                                 new SqlParameter("@AccType", SqlDbType.VarChar),
+
+                                                new SqlParameter("@DeathAmount", SqlDbType.Float),
+                                                new SqlParameter("@MRAmount", SqlDbType.Float)
                                               };
 
             ParameterArray[0].Value = PolicyType;
@@ -72,10 +76,13 @@ namespace SAGDAL
             ParameterArray[18].Value = NomDOB;
             ParameterArray[19].Value = NomAdd;
 
-            ParameterArray[16].Value = CustBankName;
-            ParameterArray[17].Value = BranchName;
-            ParameterArray[18].Value = AccNo;
-            ParameterArray[19].Value = AccType;
+            ParameterArray[20].Value = CustBankName;
+            ParameterArray[21].Value = BranchName;
+            ParameterArray[22].Value = AccNo;
+            ParameterArray[23].Value = AccType;
+
+            ParameterArray[24].Value = DeathAmount;
+            ParameterArray[25].Value = MRAmount;
 
             return DAL.ExecuteMMScalarSP("SPSavePolicyFP", ParameterArray);
 
@@ -129,6 +136,24 @@ namespace SAGDAL
             ParameterArray[0].Value = PlanID;
 
             return DAL.ExecuteDatasetSP("SPGetMFPUnitByPlanID", ParameterArray);
+        }
+
+        public DataSet GetSFPUnitByPlanIDDAL(Int16 PlanID)
+        {
+            SqlParameter[] ParameterArray = { new SqlParameter("@PID", SqlDbType.Int) };
+
+            ParameterArray[0].Value = PlanID;
+
+            return DAL.ExecuteDatasetSP("SPGetSFPUnitByPlanID", ParameterArray);
+        }
+
+        public DataSet GetMRFPUnitByPlanIDDAL(Int16 PlanID)
+        {
+            SqlParameter[] ParameterArray = { new SqlParameter("@PID", SqlDbType.Int) };
+
+            ParameterArray[0].Value = PlanID;
+
+            return DAL.ExecuteDatasetSP("SPGetMRFPUnitByPlanID", ParameterArray);
         }
     }
 }

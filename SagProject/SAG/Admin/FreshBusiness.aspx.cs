@@ -154,27 +154,30 @@ namespace SAG.Admin
 
         protected void txtRegFees_TextChanged(object sender, EventArgs e)
         {
-            txtNetAmt.Text = Convert.ToString(Int64.Parse(txtAmtRec.Text) + Int64.Parse(txtRegFees.Text));
+            txtNetAmt.Text = Convert.ToString(Double.Parse(txtAmtRec.Text) + Double.Parse(txtRegFees.Text));
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
             ///////////////////// GENERATING PLAN DETAILS - PLAN AMOUNT, MATURITY BENEFIT, END DATE, LAST PAYMENT DATE ETC START 
 
-            Double PlanAmount = 0, InstallmentAmount, MaturityAmount = 0;
-            DateTime PurDate, DueDate, LastPayDate, ExpDate;
+            Double PlanAmount = 0, InstallmentAmount, MaturityAmount = 0, DeathAmount = 0, MRAmount = 0;
+            DateTime PurDate = System.DateTime.Now, DueDate = System.DateTime.Now, LastPayDate = System.DateTime.Now, ExpDate = System.DateTime.Now;
+            Double MultiplyBy = 0;
 
             //FIND SELECTED PLAN AND DO CALCULATIONS [1 FOR MFP]
             if (ddlPlanType.SelectedValue.ToString() == "1")
             {
-                Double MultiplyBy = 0;
-
                 //GETTING VALUES OF 100 UNIT OF SELECTED PLAN
                 Int16 PlanID = Int16.Parse(ddlPlanName.SelectedValue.ToString());
                 DataSet dsUnit = PDAL.GetMFPUnitByPlanIDDAL(PlanID);
 
                 //GET PAYMENT MODE
                 int PayMode = int.Parse(ddlPayMode.SelectedValue.ToString());
+
+                PurDate = Convert.ToDateTime(txtPurDate.Text.ToString());
+                DueDate = PurDate.AddYears(PlanID);
+                ExpDate = DueDate.AddMonths(1);
 
                 if (PayMode == 1)
                 {
@@ -186,87 +189,155 @@ namespace SAG.Admin
 
                     PlanAmount = MultiplyBy * Convert.ToDouble(dsUnit.Tables[0].Rows[0]["PlanAmount"].ToString());
                     MaturityAmount = MultiplyBy * Convert.ToDouble(dsUnit.Tables[0].Rows[0]["TotaAmount"].ToString());
+
+                    LastPayDate = DueDate.AddMonths(-1);
                 }
 
                 if (PayMode == 2)
                 {
-                    Double MIFromUnit = Convert.ToDouble(dsUnit.Tables[0].Rows[0]["QI"].ToString());
+                    Double QIFromUnit = Convert.ToDouble(dsUnit.Tables[0].Rows[0]["QI"].ToString());
 
                     Double InstallmentFromCust = Convert.ToDouble(txtAmtRec.Text.ToString());
 
-                    MultiplyBy = InstallmentFromCust / MIFromUnit;
+                    MultiplyBy = InstallmentFromCust / QIFromUnit;
 
                     PlanAmount = MultiplyBy * Convert.ToDouble(dsUnit.Tables[0].Rows[0]["PlanAmount"].ToString());
                     MaturityAmount = MultiplyBy * Convert.ToDouble(dsUnit.Tables[0].Rows[0]["TotaAmount"].ToString());
+
+                    LastPayDate = DueDate.AddMonths(-3);
                 }
 
                 if (PayMode == 3)
                 {
-                    Double MIFromUnit = Convert.ToDouble(dsUnit.Tables[0].Rows[0]["HYI"].ToString());
+                    Double HYIFromUnit = Convert.ToDouble(dsUnit.Tables[0].Rows[0]["HYI"].ToString());
 
                     Double InstallmentFromCust = Convert.ToDouble(txtAmtRec.Text.ToString());
 
-                    MultiplyBy = InstallmentFromCust / MIFromUnit;
+                    MultiplyBy = InstallmentFromCust / HYIFromUnit;
 
                     PlanAmount = MultiplyBy * Convert.ToDouble(dsUnit.Tables[0].Rows[0]["PlanAmount"].ToString());
                     MaturityAmount = MultiplyBy * Convert.ToDouble(dsUnit.Tables[0].Rows[0]["TotaAmount"].ToString());
+
+                    LastPayDate = DueDate.AddMonths(-6);
                 }
 
                 if (PayMode == 4)
                 {
-                    Double MIFromUnit = Convert.ToDouble(dsUnit.Tables[0].Rows[0]["YI"].ToString());
+                    Double YIFromUnit = Convert.ToDouble(dsUnit.Tables[0].Rows[0]["YI"].ToString());
 
                     Double InstallmentFromCust = Convert.ToDouble(txtAmtRec.Text.ToString());
 
-                    MultiplyBy = InstallmentFromCust / MIFromUnit;
+                    MultiplyBy = InstallmentFromCust / YIFromUnit;
 
                     PlanAmount = MultiplyBy * Convert.ToDouble(dsUnit.Tables[0].Rows[0]["PlanAmount"].ToString());
                     MaturityAmount = MultiplyBy * Convert.ToDouble(dsUnit.Tables[0].Rows[0]["TotaAmount"].ToString());
+
+                    LastPayDate = DueDate.AddMonths(-12);
                 }
 
-                InstallmentAmount = Convert.ToDouble(txtAmtRec.Text.ToString());
+                if (PlanID <= 2)
+                {
+                    DeathAmount = 0;
+                }
+                else
+                {
+                    DeathAmount = PlanAmount;
+                }
+            }
+
+            else if (ddlPlanType.SelectedValue.ToString() == "2")
+            {
+                Int16 PlanID = Int16.Parse(ddlPlanName.SelectedValue.ToString());
+                DataSet dsUnit = PDAL.GetSFPUnitByPlanIDDAL(PlanID);
+
+                Double Percentage = Convert.ToDouble(dsUnit.Tables[0].Rows[0]["Percentage"].ToString());
+
+                Double InstallmentFromCust = Convert.ToDouble(txtAmtRec.Text.ToString());
+
+                Double Interest = (InstallmentFromCust * Percentage) / 100;
+
+                Int16 PlanTerm = Convert.ToInt16(dsUnit.Tables[0].Rows[0]["ID"].ToString());
+
+                Double TotalInterest = Interest * PlanTerm;
+
+                PlanAmount = InstallmentFromCust;
+                MaturityAmount = InstallmentFromCust + TotalInterest;
+
+                DeathAmount = PlanAmount;
 
                 PurDate = Convert.ToDateTime(txtPurDate.Text.ToString());
-                DueDate = PurDate.AddYears(PlanID);
-                LastPayDate = DueDate.AddMonths(-1);
+                DueDate = PurDate.AddYears(PlanTerm);
                 ExpDate = DueDate.AddMonths(1);
-
-
-                ///////////////////// GENERATING PLAN DETAILS - PLAN AMOUNT, MATURITY BENEFIT, END DATE, LAST PAYMENT DATE ETC END
-
-                PolicyID = PDAL.SavePolicyDAL(int.Parse(ddlPlanType.SelectedValue)
-                                                    , int.Parse(ddlPlanName.SelectedValue)
-                                                    , int.Parse(ddlPayMode.SelectedValue)
-                                                    , ddlPayMode.SelectedItem.Text
-                                                    , Int64.Parse(txtCustCode.Text)
-                                                    , Int64.Parse(txtIntroCode.Text)
-                                                    , ddlAmtRecMode.SelectedItem.Text
-                                                    , txtChqNo.Text
-                                                    , txtBankName.Text
-                                                    , PurDate
-                                                    , DueDate
-                                                    , LastPayDate
-                                                    , ExpDate
-                                                    , PlanAmount
-                                                    , InstallmentAmount
-                                                    , MaturityAmount
-                                                    , txtNomName.Text
-                                                    , Int16.Parse(txtNomAge.Text)
-                                                    , Convert.ToDateTime(txtNomDOB.Text)
-                                                    , txtNomAdd.Text
-                                                    , txtCustBankName.Text
-                                                    , txtBranchName.Text
-                                                    , txtAccNo.Text
-                                                    , txtAccType.Text
-                                                    );
-
-                ResetAll();
-
-                lblMsg.Visible = true;
-                lblMsg.Text = "Policy Stored Successfully Policy ID : " + PolicyID.ToString();
-                lnbCertificateLink.Visible = true;
-                lnbCertificateLink.NavigateUrl = "~/admin/certificate.aspx?policyid=" + PolicyID;
+                LastPayDate = PurDate;
             }
+
+            else if (ddlPlanType.SelectedValue.ToString() == "3")
+            {
+                Int16 PlanID = Int16.Parse(ddlPlanName.SelectedValue.ToString());
+                DataSet dsUnit = PDAL.GetMRFPUnitByPlanIDDAL(PlanID);
+
+                Double Percentage = Convert.ToDouble(dsUnit.Tables[0].Rows[0]["Percentage"].ToString());
+
+                Double DeathBenefitPercentage = Convert.ToDouble(dsUnit.Tables[0].Rows[0]["DeathPercentage"].ToString());
+
+                Double InstallmentFromCust = Convert.ToDouble(txtAmtRec.Text.ToString());
+
+                Double Interest = (InstallmentFromCust * Percentage) / 100;
+
+                MRAmount = Interest;
+
+                PlanAmount = InstallmentFromCust;
+                MaturityAmount = PlanAmount;
+
+                DeathAmount = (PlanAmount * DeathBenefitPercentage) / 100;
+
+                Int16 PlanTerm = Convert.ToInt16(dsUnit.Tables[0].Rows[0]["ID"].ToString());
+                PurDate = Convert.ToDateTime(txtPurDate.Text.ToString());
+                DueDate = PurDate.AddYears(PlanTerm);
+                ExpDate = DueDate.AddMonths(1);
+                LastPayDate = PurDate;
+            }
+
+            InstallmentAmount = Convert.ToDouble(txtAmtRec.Text.ToString());
+
+
+            ///////////////////// GENERATING PLAN DETAILS - PLAN AMOUNT, MATURITY BENEFIT, END DATE, LAST PAYMENT DATE ETC END
+
+            PolicyID = PDAL.SavePolicyDAL(int.Parse(ddlPlanType.SelectedValue)
+                                                , int.Parse(ddlPlanName.SelectedValue)
+                                                , int.Parse(ddlPayMode.SelectedValue)
+                                                , ddlPayMode.SelectedItem.Text
+                                                , Int64.Parse(txtCustCode.Text)
+                                                , Int64.Parse(txtIntroCode.Text)
+                                                , ddlAmtRecMode.SelectedItem.Text
+                                                , txtChqNo.Text
+                                                , txtBankName.Text
+                                                , PurDate
+                                                , DueDate
+                                                , LastPayDate
+                                                , ExpDate
+                                                , PlanAmount
+                                                , InstallmentAmount
+                                                , MaturityAmount
+                                                , txtNomName.Text
+                                                , Int16.Parse(txtNomAge.Text)
+                                                , Convert.ToDateTime(txtNomDOB.Text)
+                                                , txtNomAdd.Text
+                                                , txtCustBankName.Text
+                                                , txtBranchName.Text
+                                                , txtAccNo.Text
+                                                , txtAccType.Text
+                                                , DeathAmount
+                                                , MRAmount
+                                                );
+
+            ResetAll();
+
+            lblMsg.Visible = true;
+            lblMsg.Text = "Policy Stored Successfully Policy ID : " + PolicyID.ToString();
+            lnbCertificateLink.Visible = true;
+            lnbCertificateLink.NavigateUrl = "~/admin/certificate.aspx?policyid=" + PolicyID;
+
         }
 
         protected void ResetAll()

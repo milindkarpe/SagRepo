@@ -106,10 +106,24 @@
                         <asp:Label ID="lblInstallAmt" runat="server"></asp:Label>
                     </td>
                     <td>
-                        S.E. Code No.
+                        Code No.
                     </td>
                     <td>
                         <asp:Label ID="lblSeCode" runat="server"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Monthly Income
+                    </td>
+                    <td>
+                        <asp:Label ID="lblMRAmount" runat="server"></asp:Label>
+                    </td>
+                    <td>
+                        Amount on Accidental Death
+                    </td>
+                    <td>
+                        <asp:Label ID="lblDeathAmount" runat="server"></asp:Label>
                     </td>
                 </tr>
             </table>
