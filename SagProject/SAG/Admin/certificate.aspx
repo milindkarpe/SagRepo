@@ -12,6 +12,8 @@
         <div class="row">
             <div class="span">
                 &nbsp;
+
+
             </div>
             <div class="span2">
                 <img src="../images/Logo.png" width="80px" /><br />
@@ -187,6 +189,7 @@
         </div>
         <div>
             <asp:Label ID="lblError" runat="server"></asp:Label>
+            <asp:Button ID="printButton" CssClass="btn btn-large btn-success" runat="server" Text="Print" OnClientClick="javascript:window.print();" />
         </div>
     </div>
     </form>
