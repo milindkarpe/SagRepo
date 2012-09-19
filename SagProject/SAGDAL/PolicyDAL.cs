@@ -155,5 +155,10 @@ namespace SAGDAL
 
             return DAL.ExecuteDatasetSP("SPGetMRFPUnitByPlanID", ParameterArray);
         }
+
+        public DataSet GetMFPCommissionDAL()
+        {
+            return DAL.ExecuteDatasetSP("SPGetCommForMFP");
+        }
     }
 }

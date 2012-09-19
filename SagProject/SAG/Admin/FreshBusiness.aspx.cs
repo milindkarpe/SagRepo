@@ -243,6 +243,8 @@ namespace SAG.Admin
                 {
                     DeathAmount = PlanAmount;
                 }
+
+
             }
 
             else if (ddlPlanType.SelectedValue.ToString() == "2")
@@ -331,12 +333,19 @@ namespace SAG.Admin
                                                 , MRAmount
                                                 );
 
-            ResetAll();
+            
 
             lblMsg.Visible = true;
             lblMsg.Text = "Policy Stored Successfully Policy ID : " + PolicyID.ToString();
+            
+            ResetAll();
             lnbCertificateLink.Visible = true;
-            lnbCertificateLink.NavigateUrl = "~/admin/certificate.aspx?policyid=" + PolicyID;
+            lnbCertificateLink.NavigateUrl = "~/admin/printcertificate.aspx?policyid=" + PolicyID;
+
+        }
+
+        protected void SaveCommMFP(String PolicyID)
+        {
 
         }
 
@@ -368,7 +377,7 @@ namespace SAG.Admin
             txtBranchName.Text = "";
             txtAccType.Text = "";
 
-            lblMsg.Visible = false;
+            //lblMsg.Visible = false;
             lnbCertificateLink.NavigateUrl = "";
             lnbCertificateLink.Visible = false;
         }
@@ -376,7 +385,7 @@ namespace SAG.Admin
         protected void btnReset_Click(object sender, EventArgs e)
         {
             ResetAll();
-
+            lblMsg.Visible = false;
         }
 
     }

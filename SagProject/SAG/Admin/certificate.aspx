@@ -187,6 +187,7 @@
         </div>
         <div>
             <asp:Label ID="lblError" runat="server"></asp:Label>
+            <input type="button" value="Print This Page" class=" btn btn-large btn-success" onClick="window.print()" />
         </div>
     </div>
     </form>

@@ -65,6 +65,7 @@
     <Content Include="Admin\AddRank.aspx" />
     <Content Include="Admin\certificate.aspx" />
     <Content Include="Admin\FreshBusiness.aspx" />
+    <Content Include="Admin\printCertificate.aspx" />
     <Content Include="bin\AjaxControlToolkit.dll" />
     <Content Include="bin\SAG.dll" />
     <Content Include="bin\SAG.pdb" />
@@ -146,6 +147,13 @@
     </Compile>
     <Compile Include="Admin\FreshBusiness.aspx.designer.cs">
       <DependentUpon>FreshBusiness.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\printCertificate.aspx.cs">
+      <DependentUpon>printCertificate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\printCertificate.aspx.designer.cs">
+      <DependentUpon>printCertificate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
